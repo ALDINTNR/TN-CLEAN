@@ -1,57 +1,454 @@
+
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TN-CLEAN | Car Parking Multiplayer</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  background:#090b10;
-  color:white;
-  font-family:Arial,sans-serif;
-}
-header{
-  padding:22px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#11141c;
-  border-bottom:1px solid #292e3b;
-}
-.logo{
-  font-size:28px;
-  font-weight:900;
-  color:#55aaff;
-}
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:18px;
-}
-.hero{
-  min-height:80vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:35px 20px;
-  background:radial-gradient(ellipse at center,#17243b 0%,#090b10 70%);
-}
-.hero h1{
-  font-size:clamp(55px,12vw,110px);
-  font-weight:900;
-  letter-spacing:5px;
-  text-shadow:0 0 35px #278cff88;
-}
-.hero h1 span{color:#55aaff}
-.hero p{
-  color:#b8c2d5;
-  margin:20px 0 30px;
-  font-size:18px;
-}
-.btn{
-  display:inline-block;
-  padding:14px 25px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080a08">
+  <meta name="description" content="Official TN CLEAN Car Parking Multiplayer clan website.">
+  <title>TN CLEAN | Official Clan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #080a08;
+      --panel: #101310;
+      --green: #7cff00;
+      --white: #f6f7f4;
+      --muted: #a3aaa0;
+      --border: #252b24;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .navbar {
+      min-height: 72px;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8, 10, 8, .97);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 29px;
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    .logo small {
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    nav a {
+      font-size: 14px;
+      color: #d5d9d2;
+      transition: color .2s;
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      min-height: 440px;
+      padding: 90px 9%;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(ellipse at 80% 45%, #1c3014 0%, transparent 38%),
+        linear-gradient(120deg, #080a08 35%, #101710 100%);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "TN";
+      position: absolute;
+      right: 5%;
+      top: 5%;
+      font-size: clamp(180px, 32vw, 400px);
+      font-weight: 900;
+      font-style: italic;
+      color: rgba(124, 255, 0, .035);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 650px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 17px;
+    }
+
+    .hero h1 {
+      font-size: clamp(58px, 10vw, 105px);
+      font-weight: 900;
+      line-height: .95;
+      letter-spacing: -4px;
+    }
+
+    .hero h1 span {
+      color: var(--green);
+    }
+
+    .tagline {
+      margin-top: 22px;
+      font-size: 13px;
+      letter-spacing: 4px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-top: 18px;
+      max-width: 470px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 25px;
+      padding: 13px 24px;
+      background: var(--green);
+      color: #080a08;
+      border: 1px solid var(--green);
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    .section {
+      padding: 75px 8%;
+      max-width: 1250px;
+      margin: auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(27px, 5vw, 42px);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 span {
+      color: var(--green);
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+      gap: 20px;
+    }
+
+    .member {
+      background: linear-gradient(145deg, #111511, #0b0d0b);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px 22px;
+      text-align: center;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .member:hover {
+      transform: translateY(-6px);
+      border-color: var(--green);
+    }
+
+    .avatar {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      background: #192216;
+      border: 2px solid var(--green);
+      color: var(--green);
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    .member h3 {
+      font-size: 19px;
+      overflow-wrap: anywhere;
+      margin-bottom: 9px;
+    }
+
+    .role {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .tiktok-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid #383e36;
+      background: #080a08;
+      border-radius: 6px;
+      padding: 11px 17px;
+      font-size: 13px;
+      font-weight: 700;
+      max-width: 100%;
+      transition: .2s;
+    }
+
+    .tiktok-btn:hover {
+      color: var(--green);
+      border-color: var(--green);
+    }
+
+    .join-section {
+      text-align: center;
+      padding: 65px 20px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(ellipse at center, #172412, #080a08 70%);
+    }
+
+    .join-section h2 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 900;
+    }
+
+    .join-section h2 span {
+      color: var(--green);
+    }
+
+    .join-section p {
+      color: var(--muted);
+      margin-top: 13px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 27px 15px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    footer span {
+      color: var(--green);
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 16px 5%;
+        flex-direction: column;
+      }
+
+      nav {
+        gap: 17px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: 390px;
+        padding: 65px 6%;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .tagline {
+        letter-spacing: 2px;
+        font-size: 11px;
+      }
+
+      .section {
+        padding: 55px 5%;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a class="logo" href="#home"><span>TN</span> <small>CLEAN</small></a>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#team">Our Team</a>
+      <a href="#join">Join TN</a>
+      <a href="https://www.tiktok.com/@013.aldin"
+         target="_blank" rel="noopener noreferrer">TikTok ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">One Crew • One Code</div>
+        <h1>ROLL WITH<br><span>TN.</span></h1>
+        <div class="tagline">RESPECT • BUILDS • COMMUNITY</div>
+        <p>
+          Welcome to the TN CLEAN Car Parking Multiplayer family.
+          Respect the crew, keep your builds clean, and enjoy the drive.
+          One team, one vision.
+        </p>
+        <a class="btn"
+           href="https://www.tiktok.com/@013.aldin"
+           target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-tiktok"></i> FOLLOW TN ON TIKTOK ↗
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="team">
+      <div class="section-heading">
+        <div class="eyebrow">Meet The Crew</div>
+        <h2>OWNERS & <span>ADMINISTRATION</span></h2>
+        <p>The people behind TN CLEAN.</p>
+      </div>
+
+      <div class="team-grid">
+
+        <!-- OWNER 1 -->
+        <article class="member">
+          <div class="avatar">A</div>
+          <h3>@013.aldin</h3>
+          <div class="role">FOUNDER & OWNER</div>
+          <a class="tiktok-btn"
+             href="https://www.tiktok.com/@013.aldin"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-tiktok"></i>
+            VIEW TIKTOK ↗
+          </a>
+        </article>
+
+        <!-- OWNER 2 -->
+        <article class="member">
+          <div class="avatar">S</div>
+          <h3>@cinematicbystefke012</h3>
+          <div class="role">CO-OWNER</div>
+          <a class="tiktok-btn"
+             href="https://www.tiktok.com/@cinematicbystefke012"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-tiktok"></i>
+            VIEW TIKTOK ↗
+          </a>
+        </article>
+
+        <!-- NEW ADMIN -->
+        <article class="member">
+          <div class="avatar">R</div>
+          <h3>@ronix581</h3>
+          <div class="role">CLAN ADMIN</div>
+          <a class="tiktok-btn"
+             href="https://www.tiktok.com/@ronix581"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-tiktok"></i>
+            VIEW TIKTOK ↗
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="join-section" id="join">
+      <div class="eyebrow">Become Part Of The Crew</div>
+      <h2>READY TO JOIN <span>TN?</span></h2>
+      <p>Love cars and Car Parking Multiplayer? Contact us on TikTok.</p>
+      <a class="btn"
+         href="https://www.tiktok.com/@013.aldin"
+         target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-tiktok"></i>
+        JOIN TN ON TIKTOK ↗
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 <span>TN CLEAN</span> CAR PARKING CLAN<br>
+    BUILT FOR THE LOVE OF CARS
+  </footer>
+
+</body>
+</html>
